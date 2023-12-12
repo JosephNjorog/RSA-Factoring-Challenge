@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+import sys
+import Pollard as p
+import Standard as s
+
+file_name = sys.argv[1]
+with open(file_name, 'r') as f:
+    for l in f:
+        N = int(l.strip())
+        if N % 2 == 0:
+            print("{}={}*{}".format(N, 2, N//2))
+        else:
+            d = p.algorithm(N)
+            if d == N:
+                d = s.algorithm(N)
+            print("{}={}*{}".format(N, d, N//d))
